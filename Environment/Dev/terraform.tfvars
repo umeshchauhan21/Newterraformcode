@@ -7,7 +7,16 @@ resource_group = {
       env = "dev"
     }
   }
+
+  rg2 = {
+    name     = "dev-rg2"
+    location = "centralindia"
+    tags = {
+      env = "dev"
+    }
+  }
 }
+
 
 
 cluster_name        = "dev-aks"
