@@ -8,6 +8,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
     backendServiceArm: 'workload_identity_sc'
     backendAzureRmResourceGroupName: 'my-rg'
     backendAzureRmStorageAccountName: 'stg20260118'
