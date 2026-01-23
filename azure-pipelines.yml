@@ -1,0 +1,28 @@
+trigger: none
+  
+
+pool: default
+
+steps:
+  - 
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'workload_identity_sc'
+    backendAzureRmResourceGroupName: 'my-rg'
+    backendAzureRmStorageAccountName: 'stg20260118'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'dev.terraform.tf'
+
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      environmentServiceNameAzureRM: 'workload_identity_sc'
+  
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      environmentServiceNameAzureRM: 'workload_identity_sc'
