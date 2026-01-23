@@ -66,6 +66,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'apply'
-            workingDirectory: '''$(System.DefaultWorkingDirectory)/Environment/Dev'''
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'''
             environmentServiceNameAzureRM: 'workload_identity_sc'
 
