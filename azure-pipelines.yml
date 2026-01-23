@@ -30,15 +30,26 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
+            backendServiceArm: 'workload_identity_sc'
+            backendAzureRmResourceGroupName: 'my-rg'
+            backendAzureRmStorageAccountName: 'stg20260118'
+            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmKey: 'dev.tfstate'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
             command: 'plan'
-            workingDirectory: 'workingDirectory: ''$(System.DefaultWorkingDirectory)/Environment/Dev'''
+            workingDirectory: '''$(System.DefaultWorkingDirectory)/Environment/Dev'''
             environmentServiceNameAzureRM: 'workload_identity_sc'
 
-  - stage: Terraformapply
-    displayName: Terraform Aplly
+  - stage: Terraformaapply
+    displayName: Terraform Apply
     jobs:
       - job: Terraformaply
-        displayName: Terraform aply
+        displayName: Terraform apply
         steps:
                 
 
@@ -57,6 +68,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'apply'
-            workingDirectory: 'workingDirectory: ''$(System.DefaultWorkingDirectory)/Environment/Dev'''
+            workingDirectory: '''$(System.DefaultWorkingDirectory)/Environment/Dev'''
             environmentServiceNameAzureRM: 'workload_identity_sc'
 
