@@ -10,7 +10,7 @@ stages:
         steps:
         - task: TerraformInstaller@1
           inputs:
-            terraformVersion: 'latest'
+            terraformVersion: '1.6.6'
            
         - task: TerraformTask@5
           inputs:
@@ -38,7 +38,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'''
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
             environmentServiceNameAzureRM: 'workload_identity_sc'
 
   - stage: Terraformaapply
@@ -50,7 +50,7 @@ stages:
          
         - task: TerraformInstaller@1
           inputs:
-            terraformVersion: 'latest'
+            terraformVersion: '1.6.6'
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
