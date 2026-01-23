@@ -1,6 +1,4 @@
 trigger: none
-  
-
 pool: default
 
 steps:
@@ -19,6 +17,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: 'workingDirectory: ''$(System.DefaultWorkingDirectory)/Environment/Dev'''
     environmentServiceNameAzureRM: 'workload_identity_sc'
 
 
@@ -26,5 +25,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    workingDirectory: 'workingDirectory: ''$(System.DefaultWorkingDirectory)/Environment/Dev'''
     environmentServiceNameAzureRM: 'workload_identity_sc'
 
