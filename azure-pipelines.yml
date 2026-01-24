@@ -44,7 +44,7 @@ stages:
             backendAzureRmStorageAccountName: 'stg20260118'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'dev.tfstate'
-            
+
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
@@ -54,6 +54,7 @@ stages:
 
   - stage: Terraformaapply
     displayName: Terraform Apply
+    dependsOn: terraformplan
     jobs:
       - job: Terraformaply
         displayName: Terraform apply
