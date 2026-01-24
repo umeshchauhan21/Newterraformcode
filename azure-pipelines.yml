@@ -32,7 +32,7 @@ stages:
 
         - task: TerraformInstaller@1
           inputs:
-            terraformVersion: 'latest'
+            terraformVersion: '1.6.6'
         
         - task: TerraformTask@5
           inputs:
@@ -55,7 +55,7 @@ stages:
   - stage: Terraformaapply
     displayName: Terraform Apply
     condition: succeeded()
-    dependsOn: terraformplan
+    dependsOn: Terraformplan
     jobs:
       - job: Terraformaply
         displayName: Terraform apply
@@ -79,6 +79,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'apply'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'''
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
             environmentServiceNameAzureRM: 'workload_identity_sc'
 
