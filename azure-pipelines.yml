@@ -54,6 +54,7 @@ stages:
 
   - stage: Terraformaapply
     displayName: Terraform Apply
+    condition: succeeded()
     dependsOn: terraformplan
     jobs:
       - job: Terraformaply
